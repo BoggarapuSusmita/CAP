@@ -1,0 +1,112 @@
+<mvc:View controllerName="project1.controller.Home"
+    xmlns:mvc="sap.ui.core.mvc" displayBlock="true"
+    xmlns="sap.m" xmlns:ui="sap.ui.table" xmlns:f="sap.ui.layout.form">
+    <Page id="page" title="{i18n>title}">
+        <content>
+            <ui:Table id="products"
+				rows="{/Products}"
+				selectionMode="MultiToggle"
+				visibleRowCount="10"
+				paste="onPaste"
+				ariaLabelledBy="title">
+				<ui:extension>
+					<OverflowToolbar style="Clear">
+						<Button text="Add Product" press="onAddProducts"/>
+                        <Button text="Edit Product" press="onEditProducts"/>
+                        <ToolbarSpacer/>
+                        <SearchField width="50%" search="onFilterProducts"/>
+					</OverflowToolbar>
+				</ui:extension>
+				<ui:columns>
+					<ui:Column width="11rem">
+						<Label text="ID" />
+						<ui:template>
+							<Text text="{ID}" wrapping="false" />
+						</ui:template>
+					</ui:Column>
+					<ui:Column width="11rem">
+						<Label text="Description" />
+						<ui:template>
+							<Text text="{Description}" wrapping="false" />
+						</ui:template>
+					</ui:Column>
+                    <ui:Column width="11rem">
+						<Label text="Price" />
+						<ui:template>
+							<ObjectStatus
+                                state="{= ${Price} > '5000' ? 'Error' : 'Information'}"
+                                text="{Price}" inverted="true"/>
+						</ui:template>
+					</ui:Column>
+                    <ui:Column width="11rem">
+						<Label text="Weight" />
+						<ui:template>
+							<Text text="{Weight}" wrapping="false" />
+						</ui:template>
+					</ui:Column>
+                    <ui:Column width="11rem">
+						<Label text="Color" />
+						<ui:template>
+							<Text text="{Color}" wrapping="false" />
+						</ui:template>
+					</ui:Column>
+                    <ui:Column width="11rem">
+						<Label text="Height" />
+						<ui:template>
+							<Text text="{Height}" wrapping="false" />
+						</ui:template>
+					</ui:Column>
+                    <ui:Column width="11rem">
+						<Label text="Width" />
+						<ui:template>
+							<Text text="{Width}" wrapping="false" />
+						</ui:template>
+					</ui:Column>
+                    <ui:Column width="11rem">
+						<Label text="Depth" />
+						<ui:template>
+							<Text text="{Depth}" wrapping="false" />
+						</ui:template>
+					</ui:Column>
+				</ui:columns>
+			</ui:Table>
+            
+        </content>
+        <Panel id="idPanel" visible="false">
+            <content>
+                <f:SimpleForm
+                    title="Add Product"
+                    id="idAddProductForm"
+                    editable="true"
+                    layout="ResponsiveGridLayout"
+                    labelSpanXL="4"
+                    labelSpanL="4"
+                    labelSpanM="12"
+                    labelSpanS="12"
+                    adjustLabelSpan="false"
+                    emptySpanXL="0"
+                    emptySpanL="0"
+                    emptySpanM="0"
+                    emptySpanS="0"
+                    columnsXL="2"
+                    columnsL="2"
+                    columnsM="1"
+                    singleContainerFullSize="false"
+                    >
+                    <f:content>
+                        <Label text="ID"/> <Text id="ID"/>
+                        <Label text="Description"/> <Input id="Description" width="50%"/>
+                        <Label text="Price"/> <Input id="Price" width="50%"/>
+                        <Label text="Weight"/> <Input id="Weight" width="50%"/>
+                        <Label text="Color"/> <Input id="Color" width="50%"/>
+                        <Label text="Height"/> <Input id="Height" width="50%"/>
+                        <Label text="Width"/> <Input id="Width" width="50%"/>
+                        <Label text="Depth"/> <Input id="Depth" width="50%"/>
+                    </f:content>
+                </f:SimpleForm>
+                <Button text="Back" press="onBack" width="15%"/>
+                <Button text="Submit" press="onSubmit" width="15%"/>
+            </content>
+        </Panel>
+    </Page>
+</mvc:View>
