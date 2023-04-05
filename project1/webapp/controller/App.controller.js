@@ -6,7 +6,7 @@ sap.ui.define(
     "sap/ui/model/FilterOperator",
     "../model/formatter"
   ],
-  function (BaseController, MessageToast, formatter, Filter, FilterOperator) {
+  function (BaseController, MessageToast, Filter, FilterOperator, formatter) {
     "use strict";
 
     return BaseController.extend("project1.controller.App", {
